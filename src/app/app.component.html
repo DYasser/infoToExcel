@@ -1,0 +1,270 @@
+<div style="text-align: center;">
+  <button (click)="exportexcel()">Export to Excel</button>
+</div>
+
+<div>
+  <h2 style="text-align: center;">Filters: </h2>
+  
+  <div class="filters" fxLayout="column" fxLayoutAlign="space-between center">
+    <!--<div class="filterId">
+      <span>ID : From </span>
+      <select [(ngModel)]="selectedOption">
+        <option *ngFor="let o of options">
+          {{o.name}}
+        </option>
+      </select>
+       To 
+      <select [(ngModel)]="selectedOption">
+        <option *ngFor="let o of options">
+          {{o.name}}
+        </option>
+      </select> 
+    </div>
+    <br>
+    
+    <div class="IdParent">
+      <span>ID Parent : From </span>
+      <select [(ngModel)]="selectedOption">
+        <option *ngFor="let o of options">
+          {{o.name}}
+        </option>
+      </select>
+       To 
+      <select [(ngModel)]="selectedOption">
+        <option *ngFor="let o of options">
+          {{o.name}}
+        </option>
+      </select> 
+    </div>
+    <br>
+
+    <div class="types">
+      <strong>Types: </strong>
+      <select [(ngModel)]="selectedOption" (change)="search()">
+        <option *ngFor="let o of options">
+          {{o.name}}
+        </option>
+      </select>
+    </div>
+    <br>-->
+
+    <div class="theme">
+      <strong>Nom du Theme: </strong>
+      <input  [(ngModel)]="searchText" (ngModelChange)="search()" placeholder="Nom Theme">
+    </div>
+    <br>
+    
+    <!--<div class="ordre">
+      <span>Ordre : From </span>
+      <select [(ngModel)]="selectedOption">
+        <option *ngFor="let o of ordreList">
+          {{o}}
+        </option>
+      </select>
+       To 
+      <select [(ngModel)]="selectedOption">
+        <option *ngFor="let o of ordreList">
+          {{o}}
+        </option>
+      </select> 
+    </div>
+    <br>
+
+    <div class="nbrVisite">
+      <span>Nombre de visite : From </span>
+      <select [(ngModel)]="selectedOption">
+        <option *ngFor="let o of options">
+          {{o.name}}
+        </option>
+      </select>
+       To 
+      <select [(ngModel)]="selectedOption">
+        <option *ngFor="let o of options">
+          {{o.name}}
+        </option>
+      </select> 
+    </div>
+    <br>-->
+
+    <div class="flagActif">      <!-- theme -->
+      <strong>Flag Actif : </strong> 
+      <span>
+        <span>O</span>
+        <input (change)="chkOactif(0); search()" type="checkbox" [checked]="Oactif">
+        <span> - N</span>
+        <input (change)="chkNactif(0); search()" type="checkbox" [checked]="Nactif">
+      </span>
+    </div>
+
+    <div class="flagAff">
+      <strong>Flag affichage prod : </strong>
+      <span>
+        <span>O</span>
+        <input (change)="chkOaff(0)" (change)="search()" type="checkbox" [checked]="Oaff">
+        <span> - N</span>
+        <input (change)="chkNaff(0)" (change)="search()" type="checkbox" [checked]="Naff">
+      </span>
+    </div>
+    <br>
+
+    <div class="flagActif">     <!-- sous theme 1 -->
+      <strong>Flag Actif sous 1 : </strong> 
+      <span>
+        <span>O</span>
+        <input (change)="chkOactif(1); search()" type="checkbox" [checked]="Oactif1">
+        <span> - N</span>
+        <input (change)="chkNactif(1); search()" type="checkbox" [checked]="Nactif1">
+      </span>
+    </div>
+
+    <div class="flagAff">
+      <strong>Flag affichage sous prod 1 : </strong>
+      <span>
+        <span>O</span>
+        <input (change)="chkOaff(1)" (change)="search()" type="checkbox" [checked]="Oaff1">
+        <span> - N</span>
+        <input (change)="chkNaff(1)" (change)="search()" type="checkbox" [checked]="Naff1">
+      </span>
+    </div>
+    <br>
+
+    <div class="flagActif">     <!-- sous theme 2 -->
+      <strong>Flag Actif sous 2 : </strong> 
+      <span>
+        <span>O</span>
+        <input (change)="chkOactif(2); search()" type="checkbox" [checked]="Oactif2">
+        <span> - N</span>
+        <input (change)="chkNactif(2); search()" type="checkbox" [checked]="Nactif2">
+      </span>
+    </div>
+
+    <div class="flagAff">
+      <strong>Flag affichage sous prod 2 : </strong>
+      <span>
+        <span>O</span>
+        <input (change)="chkOaff(2)" (change)="search()" type="checkbox" [checked]="Oaff2">
+        <span> - N</span>
+        <input (change)="chkNaff(2)" (change)="search()" type="checkbox" [checked]="Naff2">
+      </span>
+    </div>
+    <br>
+
+    <div class="flagActif">     <!-- sous theme 3 -->
+      <strong>Flag Actif sous 3 : </strong> 
+      <span>
+        <span>O</span>
+        <input (change)="chkOactif(3); search()" type="checkbox" [checked]="Oactif3">
+        <span> - N</span>
+        <input (change)="chkNactif(3); search()" type="checkbox" [checked]="Nactif3">
+      </span>
+    </div>
+
+    <div class="flagAff">
+      <strong>Flag affichage sous prod 3 : </strong>
+      <span>
+        <span>O</span>
+        <input (change)="chkOaff(3)" (change)="search()" type="checkbox" [checked]="Oaff3">
+        <span> - N</span>
+        <input (change)="chkNaff(3)" (change)="search()" type="checkbox" [checked]="Naff3">
+      </span>
+    </div>
+    <br>
+    <!--<div class="flagTendance">
+      <strong>Flag Tendance : </strong>
+      <span>
+        <span>O</span>
+        <input (change)="chkOtend()" (change)="search()" type="checkbox" [checked]="Otend">
+        <span> - N</span>
+        <input (change)="chkNtend()" (change)="search()" type="checkbox" [checked]="Ntend">
+      </span>
+    </div>
+<br>
+    <div class="ordreTendance">
+      <span>Ordre Tendance : From </span>
+      <select [(ngModel)]="selectedOption">
+        <option *ngFor="let o of options">
+          {{o.name}}
+        </option>
+      </select>
+       To 
+      <select [(ngModel)]="selectedOption">
+        <option *ngFor="let o of options">
+          {{o.name}}
+        </option>
+      </select> 
+    </div>-->
+    <br>
+    <button (click)="clear()">Clear all</button>
+  </div>
+
+  <br>
+  <h2 style="text-align: center;">Filtered list ({{selected_names.length}})</h2>
+  <div>
+    <table id="excel-table">
+      <tr style="cursor:pointer;">
+        <th (click) = "sortInt(0, 'id')">Id</th>
+        <th (click) = "sortString(0, 'nom')">Nom Theme</th>
+        <th (click) = "sortString(0, 'flag_actif')">Actif</th>
+        <th (click) = "sortString(0, 'flag_aff_prod')">Aff prod</th>
+        <th (click) = "sortInt(0, 'nombre_articles')">Nombre articles</th>
+        
+        <th (click) = "sortInt(1, 'id')">Id sous_1</th>
+        <th (click) = "sortString(1, 'nom')">Nom Sous Theme1</th>
+        <th (click) = "sortString(1, 'flag_actif')">Sous Actif 1</th>
+        <th (click) = "sortString(1, 'flag_aff_prod')">Aff sous prod 1</th>
+        <th (click) = "sortInt(1, 'nombre_articles')">Nombre sous articles 1</th>
+        
+        <th (click) = "sortInt(2, 'id')">Id sous_2</th>
+        <th (click) = "sortString(2, 'nom')">Nom Sous Theme2</th>
+        <th (click) = "sortString(2, 'flag_actif')">Sous Actif 2</th>
+        <th (click) = "sortString(2, 'flag_aff_prod')">Aff sous prod 2</th>
+        <th (click) = "sortInt(2, 'nombre_articles')">Nombre sous articles 2</th>
+        
+        <th (click) = "sortInt(3, 'id')">Id sous_3</th>
+        <th (click) = "sortString(3, 'nom')">Nom Sous Theme3</th>
+        <th (click) = "sortString(3, 'flag_actif')">Sous Actif 3</th>
+        <th (click) = "sortString(3, 'flag_aff_prod')">Aff sous prod 3</th>
+        <th (click) = "sortInt(3, 'nombre_articles')">Nombre sous articles 3</th>
+
+        <!--<th (click) = "sortIdParent()">Id parent</th>
+        <th (click) = "sortType()">Type</th>
+        <th (click) = "sortOrdre()" >Ordre theme</th>
+        <th (click) = "sortNbr()">Nbr de visite</th>
+        <th (click) = "sortTendance()">tendance</th>
+        <th (click) = "sortOrdreTend()">ordre tendance</th>-->
+      </tr>
+      <tr *ngFor="let item of selected_names" id="item"> 
+        <td>{{item.id_theme}}</td>
+        <td>{{item.nom_theme}}</td>
+        <td>{{item.flag_actif_categorie}}</td>
+        <td>{{item.flag_affichage_prod_categorie}}</td>
+        <td>{{item.nombre_articles}}</td>
+        
+        <td>{{item.id_sous_theme_1}}</td>
+        <td>{{item.nom_sous_theme_1}}</td>
+        <td>{{item.flag_actif_sous_categorie_1}}</td>
+        <td>{{item.flag_affichage_prod_sous_categorie_1}}</td>
+        <td>{{item.nombre_articles_sou1}}</td>
+        
+        <td>{{item.id_sous_theme_2}}</td>
+        <td>{{item.nom_sous_theme_2}}</td>
+        <td>{{item.flag_actif_sous_categorie_2}}</td>
+        <td>{{item.flag_affichage_prod_sous_categorie_2}}</td>
+        <td>{{item.nombre_articles_sou2}}</td>
+        
+        <td>{{item.id_sous_theme_3}}</td>
+        <td>{{item.nom_sous_theme_3}}</td>
+        <td>{{item.flag_actif_sous_categorie_3}}</td>
+        <td>{{item.flag_affichage_prod_sous_categorie_3}}</td>
+        <td>{{item.nombre_articles_sou3}}</td>
+
+        <!--<td>{{item.id_theme_parent}}</td>
+        <td>{{item.type_theme}}</td>
+        <td>{{item.ordre_theme}}</td>
+        <td>{{item.nombre_visite}}</td>
+        <td>{{item.flag_tendance}}</td>
+        <td>{{item.ordre_tendance}}</td>-->
+      </tr>
+    </table>
+  </div>
+</div>
